@@ -1,0 +1,65 @@
+@media (max-width: 991px) {}
+
+@media (max-width: 768px) {
+    .minimized .sidebar {
+        width: 0px !important;
+    }
+
+    /* APP */
+    .main__content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .app__container__minimized .main__content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    /* APPHEADER */
+    .dropdown-menu.show {
+        position: fixed;
+        right: 15px;
+        left: auto;
+        top: 60px;
+        transform: none;
+        z-index: 1070;
+        /* Garantir que fique acima do backdrop em dispositivos móveis */
+    }
+
+    .dropdown-notifications .dropdown-menu.show {
+        width: 250px;
+        max-width: 90%;
+    }
+
+    .dropdown-user .dropdown-menu.show {
+        width: 250px;
+        max-width: 90%;
+    }
+
+    /* SIDEBAR */
+    .sidebar__container {
+        transform: translateX(-100%);
+    }
+
+    .sidebar__container.open {
+        transform: translateX(0);
+        width: 250px;
+    }
+
+    .sidebar__minimized.open .sidebar__text {
+        display: block;
+    }
+
+    .sidebar__minimized.open .sidebar__link {
+        justify-content: flex-start;
+    }
+
+    .sidebar__minimized.open .sidebar__icon {
+        margin-right: 1rem;
+    }
+}
+
+@media (max-width: 575px) {}
+
+@media (max-width: 480px) {}

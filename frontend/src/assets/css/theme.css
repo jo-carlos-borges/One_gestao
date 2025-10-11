@@ -1,0 +1,63 @@
+.color__theme__light {
+    background: var(--white-color, #ffffff);
+    background-color: var(--white-color, #ffffff);
+    color: var(--dark-color, #2c2c2c);
+}
+
+.color__theme__dark {
+    background: var(--dark-color, #2c2c2c);
+    background-color: var(--dark-color, #2c2c2c);
+    color: var(--white-color, #ffffff);
+}
+
+.color__theme__light2 {
+    background: var(--white-color2, #f1f1f1);
+    background-color: var(--white-color2, #f1f1f1);
+    color: var(--dark-color, #1e1e1e);
+}
+
+.color__theme__dark2 {
+    background: var(--dark-color2, #1e1e1e);
+    background-color: var(--dark-color2, #1e1e1e);
+    color: var(--white-color2, #f1f1f1);
+}
+
+.color__theme__light__btn {
+    color: #fff;
+    background: var(--linear-gradient-logo-color);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.color__theme__light__btn:hover,
+.color__theme__light__btn:focus {
+    color: #fff;
+    background: var(--linear-gradient-logo-color);
+    opacity: 0.9;
+}
+
+.color__theme__dark__btn {
+    color: #fff;
+    background: var(--linear-gradient-logo-color);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.color__theme__dark__btn:hover,
+.color__theme__dark__btn:focus {
+    color: #fff;
+    background: var(--linear-gradient-logo-color);
+    opacity: 0.9;
+}
+
+/* Estilo para modo claro */
+.swal2-popup.color__theme__light {
+  background-color: #ffffff;
+  color: #2c2c2c;
+}
+
+/* Estilo para modo escuro */
+.swal2-popup.color__theme__dark {
+  background-color: #2c2c2c;
+  color: #ffffff;
+}

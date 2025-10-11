@@ -1,0 +1,49 @@
+import { createMemoryHistory, createRouter } from 'vue-router'
+import store from '@/store/store'
+
+import LoginView from '../views/Login/LoginView.vue'
+import DashboardView from '../views/Dashboard/DashboardView.vue'
+import EmpresasView from '../views/Cadastros/EmpresasView.vue'
+import ClientesView from '../views/Cadastros/ClientesView.vue'
+import ProdutosView from '../views/Cadastros/ProdutosView.vue'
+import ClientsView from '../views/Clients/ClientsView.vue'
+import ProductsView from '../views/Products/ProductsView.vue'
+import SaleFormView from '../views/Sales/SaleFormView.vue'
+import SalesListView from '../views/Sales/SalesListView.vue'
+import SaleDetailView from '../views/Sales/SaleDetailView.vue'
+
+const routes = [
+   { path: '/', name: 'LoginView', component: LoginView, meta: { requiresAuth: true } },
+   { path: '/DashboardView', name: 'DashboardView', component: DashboardView, meta: { requiresAuth: true } },
+   { path: '/clients', name: 'Clients', component: ClientsView, meta: { requiresAuth: true } },
+   { path: '/gta-products', name: 'GtaProducts', component: ProductsView, meta: { requiresAuth: true } },
+   { path: '/gta-sales', name: 'GtaSales', component: SalesListView, meta: { requiresAuth: true } },
+   { path: '/gta-sales/new', name: 'GtaSaleNew', component: SaleFormView, meta: { requiresAuth: true } },
+   { path: '/gta-sales/:id', name: 'GtaSaleDetail', component: SaleDetailView, meta: { requiresAuth: true } },
+   { path: '/empresas', name: 'EmpresasView', component: EmpresasView, meta: { requiresAuth: true } },
+   { path: '/clientes', name: 'ClientesView', component: ClientesView, meta: { requiresAuth: true } },
+   { path: '/produtos', name: 'ProdutosView', component: ProdutosView, meta: { requiresAuth: true } }
+]
+
+const router = createRouter({
+   history: createMemoryHistory(),
+   routes,
+})
+
+router.beforeEach((to, from, next) => {
+   const isLogged = store.state.auth.isLogged
+
+   if (to.path === '/' && isLogged) {
+      next({ name: 'DashboardView' })
+   } else if (to.matched.some(record => record.meta.requiresAuth) && !isLogged) {
+      if (to.path !== '/') {
+         next({ name: 'LoginView' })
+      } else {
+         next()
+      }
+   } else {
+      next()
+   }
+})
+
+export default router

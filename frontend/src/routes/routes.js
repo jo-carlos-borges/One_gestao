@@ -11,6 +11,8 @@ import ProductsView from '../views/Products/ProductsView.vue'
 import SaleFormView from '../views/Sales/SaleFormView.vue'
 import SalesListView from '../views/Sales/SalesListView.vue'
 import SaleDetailView from '../views/Sales/SaleDetailView.vue'
+import ProjectsListView from '../views/Projects/ProjectsListView.vue'
+import ProjectFormView from '../views/Projects/ProjectFormView.vue'
 
 const routes = [
    { path: '/', name: 'LoginView', component: LoginView, meta: { requiresAuth: true } },
@@ -22,7 +24,19 @@ const routes = [
    { path: '/gta-sales/:id', name: 'GtaSaleDetail', component: SaleDetailView, meta: { requiresAuth: true } },
    { path: '/empresas', name: 'EmpresasView', component: EmpresasView, meta: { requiresAuth: true } },
    { path: '/clientes', name: 'ClientesView', component: ClientesView, meta: { requiresAuth: true } },
-   { path: '/produtos', name: 'ProdutosView', component: ProdutosView, meta: { requiresAuth: true } }
+   { path: '/produtos', name: 'ProdutosView', component: ProdutosView, meta: { requiresAuth: true } },
+   { 
+     path: '/projects', 
+     name: 'Projects', // Corresponde ao 'active' que definimos no menu
+     component: ProjectsListView, 
+     meta: { requiresAuth: true } 
+   },
+   { 
+     path: '/projects/new', 
+     name: 'ProjectNew', 
+     component: ProjectFormView,
+     meta: { requiresAuth: true } 
+   }
 ]
 
 const router = createRouter({

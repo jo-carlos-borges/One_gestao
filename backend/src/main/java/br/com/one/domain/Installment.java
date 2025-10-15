@@ -14,7 +14,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,9 +24,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "installment", uniqueConstraints = {
-	    @UniqueConstraint(columnNames = {"sale_id", "project_id"})
-})
+@Table(name = "installment")
 public class Installment {
 	
 	@Id
@@ -35,7 +32,7 @@ public class Installment {
 	private Long id;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "sale_id")
+	@JoinColumn(name = "sale_id", nullable = true)
 	private Sale sale;
 	
     @ManyToOne(fetch = FetchType.LAZY)

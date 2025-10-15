@@ -6,11 +6,14 @@ import java.util.Set;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Data
-@Entity
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@EqualsAndHashCode(exclude = "projectDevelopers")
+@ToString(exclude = "projectDevelopers")
 public class Project {
 
     @Id

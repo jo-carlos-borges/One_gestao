@@ -30,7 +30,8 @@ const menuItems = [
   { name: 'Fábrica de Software', icon: Code, route: '/projects', active: 'Projects' },
   { name: 'Assinaturas (SaaS)', icon: Cloud, route: '/subscriptions', active: 'Subscriptions' },
   { name: 'Financeiro', icon: DollarSign, route: '/financial', active: 'Financial' },
-  { name: 'Comissões', icon: Briefcase, route: '/commissions', active: 'Commissions' },
+  { name: 'Pontuação (Devs)', icon: Briefcase, route: '/commissions/developers', active: 'DeveloperCommissions' },
+  { name: 'Comissão (Vendas)', icon: DollarSign, route: '/commissions/salespeople', active: 'SalespersonCommissions' },
   { name: 'Funcionários', icon: Users, route: '/employees', active: 'Employees' },
   { name: 'Configurações', icon: Settings, route: '/settings', active: 'Settings' },
 ]

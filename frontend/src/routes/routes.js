@@ -13,6 +13,8 @@ import SalesListView from '../views/Sales/SalesListView.vue'
 import SaleDetailView from '../views/Sales/SaleDetailView.vue'
 import ProjectsListView from '../views/Projects/ProjectsListView.vue'
 import ProjectFormView from '../views/Projects/ProjectFormView.vue'
+import DeveloperCommissionsView from '../views/Commissions/DeveloperCommissionsView.vue'
+import SalespersonCommissionsView from '../views/Commissions/SalespersonCommissionsView.vue'
 
 const routes = [
    { path: '/', name: 'LoginView', component: LoginView, meta: { requiresAuth: true } },
@@ -35,6 +37,18 @@ const routes = [
      path: '/projects/new', 
      name: 'ProjectNew', 
      component: ProjectFormView,
+     meta: { requiresAuth: true } 
+   },
+   { 
+     path: '/commissions/developers', 
+     name: 'DeveloperCommissions',
+     component: DeveloperCommissionsView, 
+     meta: { requiresAuth: true } 
+   },
+   { 
+     path: '/commissions/salespeople', 
+     name: 'SalespersonCommissions',
+     component: SalespersonCommissionsView, 
      meta: { requiresAuth: true } 
    }
 ]

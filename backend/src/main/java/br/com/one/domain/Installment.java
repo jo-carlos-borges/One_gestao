@@ -50,4 +50,8 @@ public class Installment {
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
 	private InstallmentStatus status;
+	
+	@Builder.Default
+	@Column(nullable = false, columnDefinition = "boolean default false")
+	private boolean commissionPaid = false;
 }

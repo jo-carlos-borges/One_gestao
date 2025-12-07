@@ -44,4 +44,9 @@ public interface InstallmentRepository extends JpaRepository<Installment, Long> 
 	
 	List<Installment> findBySubscriptionId(Long subscriptionId);
 	
+	@Query("SELECT COUNT(i) > 0 FROM Installment i WHERE i.subscription.id = :subId AND FUNCTION('MONTH', i.dueDate) = :month AND FUNCTION('YEAR', i.dueDate) = :year")
+	boolean existsBySubscriptionIdAndMonthAndYear(Long subId, int month, int year);
+
+	List<Installment> findBySubscriptionIdIsNotNullOrderByDueDateDesc();
+	
 }

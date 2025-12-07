@@ -22,8 +22,8 @@ public class SubscriptionMapper {
             subscription.getStatus(),
             subscription.getStartDate(),
             installments != null ? installments.stream()
-                .map(i -> new InstallmentResponse(i.getId(), i.getAmount(), i.getDueDate(), i.getPaymentDate(), i.getStatus()))
-                .collect(Collectors.toList()) : Collections.emptyList()
+                    .map(InstallmentMapper::toResponse)
+                    .collect(Collectors.toList()) : Collections.emptyList()
         );
     }
 }

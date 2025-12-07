@@ -8,3 +8,7 @@ export const getSubscriptions = () => {
   return api.get('/subscriptions');
 };
 
+export const getSubscriptionById = (id) => {
+  return api.get(`/subscriptions/${id}`);
+};
+

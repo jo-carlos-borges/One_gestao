@@ -64,7 +64,8 @@ const menuItemsWithChildren = [
     key: 'saas',
     children: [
       { active: 'Subscriptions' },
-      { active: 'SubscriptionNew' }
+      { active: 'SubscriptionNew' },
+      { active: 'SaasFinancial' }
     ]
   },
   {
@@ -135,6 +136,7 @@ const menuItems = [
     key: 'saas',
     children: [
       { name: 'Assinaturas', icon: Cloud, route: '/subscriptions', active: 'Subscriptions' },
+      { name: 'Financeiro SaaS', icon: DollarSign, route: '/subscriptions/financial', active: 'SaasFinancial' },
     ]
   },
   { 

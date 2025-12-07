@@ -22,7 +22,7 @@ const isInstallmentPlan = computed(() => projectForm.value.paymentMethod === 'IN
 onMounted(async () => {
   try {
     const [clientsRes, usersRes] = await Promise.all([
-      api.get('/clients', { params: { size: 1000 } }),
+      api.get('/clients', { params: { size: 1000, unit: 'SOFTWARE_FACTORY' } }), // Filtro para clientes SOFTWARE_FACTORY
       api.get('/users', { params: { size: 1000 } })
     ]);
     clients.value = clientsRes.data.content;

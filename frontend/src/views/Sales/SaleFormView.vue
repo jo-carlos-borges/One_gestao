@@ -33,7 +33,7 @@ const isInstallmentPlan = computed(() => saleForm.value.paymentMethod === 'INSTA
 const loadFormData = async () => {
   try {
     const [clientsRes, productsRes, usersRes] = await Promise.all([
-      api.get('/clients'), // Endpoint correto do backend
+      api.get('/clients', { params: { size: 1000, unit: 'FIVEM' } }), // Filtro para clientes FIVEM
       api.get('/products'), // Endpoint correto do backend
       api.get('/users') // Endpoint correto do backend
     ]);

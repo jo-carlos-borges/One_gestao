@@ -51,6 +51,9 @@ public class Installment {
 	
 	private LocalDate paymentDate;
 	
+	@Column(length = 100)
+	private String description;
+	
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
 	private InstallmentStatus status;

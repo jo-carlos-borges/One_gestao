@@ -9,7 +9,8 @@ const isEditing = ref(false);
 const currentProduct = ref({
   name: '',
   price: 0.00,
-  description: ''
+  description: '',
+  businessUnit: 'FIVEM'
 });
 
 // Formata o valor monetário para exibição
@@ -34,7 +35,7 @@ const fetchProducts = async () => {
 // Abre o modal para um novo produto
 const openCreateModal = () => {
   isEditing.value = false;
-  currentProduct.value = { name: '', price: 0.00, description: '' };
+  currentProduct.value = { name: '', price: 0.00, description: '', businessUnit: 'FIVEM' };
   showModal.value = true;
 };
 
@@ -148,6 +149,14 @@ onMounted(fetchProducts);
              <div class="mb-3">
               <label for="description" class="form-label">Descrição</label>
               <textarea class="form-control" id="description" rows="3" v-model="currentProduct.description"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="businessUnit" class="form-label">Unidade de Negócio</label>
+              <select class="form-select" id="businessUnit" v-model="currentProduct.businessUnit" required>
+                <option value="FIVEM">FiveM</option>
+                <option value="SOFTWARE_FACTORY">Software Factory</option>
+                <option value="SAAS">SaaS</option>
+              </select>
             </div>
           </form>
         </div>

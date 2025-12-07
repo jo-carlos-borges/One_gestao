@@ -72,16 +72,19 @@ onMounted(fetchSubscriptions);
           <table class="table table-hover">
             <thead>
               <tr>
+                <th>ID</th>
                 <th>Cliente</th>
                 <th>Software</th>
                 <th>Status</th>
                 <th>Mensalidade</th>
                 <th>Vencimento</th>
                 <th>Data de Criação</th>
+                <th>Ações</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="subscription in subscriptions" :key="subscription.id">
+                <td>#{{ subscription.id }}</td>
                 <td>{{ subscription.clientName || 'N/A' }}</td>
                 <td>{{ subscription.softwareName }}</td>
                 <td>
@@ -95,7 +98,12 @@ onMounted(fetchSubscriptions);
                 </td>
                 <td>{{ formatCurrency(subscription.monthlyFee) }}</td>
                 <td>Dia {{ subscription.dueDay }}</td>
-                <td>{{ formatDate(subscription.createdAt) }}</td>
+                <td>{{ formatDate(subscription.startDate) }}</td>
+                <td>
+                  <router-link :to="`/subscriptions/${subscription.id}`" class="btn btn-sm btn-outline-primary">
+                    Detalhes
+                  </router-link>
+                </td>
               </tr>
             </tbody>
           </table>

@@ -12,7 +12,8 @@ const currentClient = ref({
   document: '',
   email: '',
   phone: '',
-  discordId: ''
+  discordId: '',
+  businessUnits: [] // Array para armazenar as unidades de negócio
 });
 
 // Busca os clientes da API
@@ -29,20 +30,29 @@ const fetchClients = async () => {
 // Abre o modal para um novo cliente
 const openCreateModal = () => {
   isEditing.value = false;
-  currentClient.value = { name: '', document: '', email: '', phone: '', discordId: '' };
+  currentClient.value = { name: '', document: '', email: '', phone: '', discordId: '', businessUnits: [] };
   showModal.value = true;
 };
 
 // Abre o modal para editar um cliente existente
 const openEditModal = (client) => {
   isEditing.value = true;
-  currentClient.value = { ...client };
+  currentClient.value = { 
+    ...client,
+    businessUnits: client.businessUnits || [] // Garante que seja um array
+  };
   showModal.value = true;
 };
 
 // Salva ou atualiza o cliente
 const saveClient = async () => {
   try {
+    // Validação: pelo menos uma unidade de negócio deve ser selecionada
+    if (!currentClient.value.businessUnits || currentClient.value.businessUnits.length === 0) {
+      alert("Selecione pelo menos uma Unidade de Negócio.");
+      return;
+    }
+    
     if (isEditing.value) {
       await api.put(`/clients/${currentClient.value.id}`, currentClient.value);
     } else {
@@ -126,6 +136,24 @@ onMounted(fetchClients);
         </div>
         <div class="modal-body">
           <form @submit.prevent="saveClient">
+            <div class="card mb-3">
+              <div class="card-header">Unidades de Negócio (Onde este cliente atua?)</div>
+              <div class="card-body">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="fivem" value="FIVEM" v-model="currentClient.businessUnits">
+                  <label class="form-check-label" for="fivem">FiveM (Scripts/Mods)</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="factory" value="SOFTWARE_FACTORY" v-model="currentClient.businessUnits">
+                  <label class="form-check-label" for="factory">Fábrica de Software</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="saas" value="SAAS" v-model="currentClient.businessUnits">
+                  <label class="form-check-label" for="saas">SaaS (Assinaturas)</label>
+                </div>
+              </div>
+            </div>
+            
             <div class="mb-3">
               <label for="name" class="form-label">Nome</label>
               <input type="text" class="form-control" id="name" v-model="currentClient.name" required>

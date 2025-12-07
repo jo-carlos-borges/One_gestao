@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import br.com.one.domain.BusinessUnit;
 import br.com.one.domain.Product;
 import br.com.one.mappers.ProductMapper;
 import br.com.one.records.ProductRequest;
@@ -24,6 +25,7 @@ public class ProductService {
             .name(request.name())
             .price(request.price())
             .description(request.description())
+            .businessUnit(request.businessUnit() != null ? request.businessUnit() : BusinessUnit.FIVEM)
             .build();
         
         Product savedProduct = productRepository.save(product);
@@ -47,6 +49,9 @@ public class ProductService {
                 product.setName(request.name());
                 product.setPrice(request.price());
                 product.setDescription(request.description());
+                if (request.businessUnit() != null) {
+                    product.setBusinessUnit(request.businessUnit());
+                }
                 Product updatedProduct = productRepository.save(product);
                 return ResponseEntity.ok(ProductMapper.toResponse(updatedProduct));
             })

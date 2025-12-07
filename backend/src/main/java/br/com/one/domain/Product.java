@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -31,4 +33,8 @@ public class Product {
 
     @Column(length = 500)
     private String description;
+    
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private BusinessUnit businessUnit = BusinessUnit.FIVEM;
 }

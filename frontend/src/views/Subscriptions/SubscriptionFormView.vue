@@ -19,11 +19,11 @@ const form = ref({
   dueDay: 10
 });
 
-const isInstallment = computed(() => form.value.implementationPaymentMethod === 'INSTALLMENT_PLAN');
+const isInstallment = computed(() => form.value.implementationPaymentMethod === 'INSTALLMENTS_PLAN');
 
 onMounted(async () => {
   try {
-    const response = await api.get('/clients', { params: { size: 1000 } });
+    const response = await api.get('/clients', { params: { size: 1000, unit: 'SAAS' } }); // Filtro para clientes SAAS
     clients.value = response.data.content;
   } catch (error) {
     console.error("Erro ao carregar clientes:", error);
@@ -95,7 +95,7 @@ const handleSubmit = async () => {
                     <label class="form-label">Forma de Pagamento (Setup)</label>
                     <select class="form-select" v-model="form.implementationPaymentMethod">
                       <option value="PIX">À Vista (PIX/Transferência)</option>
-                      <option value="INSTALLMENT_PLAN">Parcelado</option>
+                      <option value="INSTALLMENTS_PLAN">Parcelado</option>
                     </select>
                   </div>
 

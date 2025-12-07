@@ -5,6 +5,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import br.com.one.domain.BusinessUnit;
 import br.com.one.domain.Client;
 import br.com.one.mappers.ClientMapper;
 import br.com.one.records.ClientRequest;
@@ -28,6 +30,7 @@ public class ClientService {
             .email(request.email())
             .phone(request.phone())
             .discordId(request.discordId())
+            .businessUnits(request.businessUnits())
             .build();
         
         Client savedClient = clientRepository.save(client);
@@ -40,9 +43,12 @@ public class ClientService {
             .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente não encontrado"));
     }
 
-    public ResponseEntity<Page<ClientResponse>> findAll(Pageable pageable) {
-        Page<ClientResponse> clients = clientRepository.findAll(pageable).map(ClientMapper::toResponse);
-        return ResponseEntity.ok(clients);
+    public Page<ClientResponse> findAll(Pageable pageable, BusinessUnit filterUnit) {
+        if (filterUnit != null) {
+            return clientRepository.findByBusinessUnit(filterUnit, pageable)
+                    .map(ClientMapper::toResponse);
+        }
+        return clientRepository.findAll(pageable).map(ClientMapper::toResponse);
     }
 
     public ResponseEntity<Object> update(Long id, ClientRequest request) {

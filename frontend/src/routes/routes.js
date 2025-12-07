@@ -18,6 +18,8 @@ import SalespersonCommissionsView from '../views/Commissions/SalespersonCommissi
 import InstallationBonusView from '../views/Commissions/InstallationBonusView.vue'
 import SubscriptionsListView from '../views/Subscriptions/SubscriptionsListView.vue'
 import SubscriptionFormView from '../views/Subscriptions/SubscriptionFormView.vue'
+import SubscriptionDetailsView from '../views/Subscriptions/SubscriptionDetailsView.vue'
+import SaasFinancialView from '../views/Subscriptions/SaasFinancialView.vue'
 
 const routes = [
    { path: '/', name: 'LoginView', component: LoginView, meta: { requiresAuth: true } },
@@ -70,6 +72,18 @@ const routes = [
      path: '/subscriptions/new', 
      name: 'SubscriptionNew', 
      component: SubscriptionFormView, 
+     meta: { requiresAuth: true } 
+   },
+   { 
+     path: '/subscriptions/:id', 
+     name: 'SubscriptionDetails', 
+     component: SubscriptionDetailsView, 
+     meta: { requiresAuth: true } 
+   },
+   { 
+     path: '/subscriptions/financial', 
+     name: 'SaasFinancial', 
+     component: SaasFinancialView, 
      meta: { requiresAuth: true } 
    }
 ]

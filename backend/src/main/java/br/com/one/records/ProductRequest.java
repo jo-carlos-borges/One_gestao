@@ -2,6 +2,7 @@ package br.com.one.records;
 
 import java.math.BigDecimal;
 
+import br.com.one.domain.BusinessUnit;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -17,5 +18,7 @@ public record ProductRequest(
         BigDecimal price,
 
         @Size(max = 500)
-        String description) {
+        String description,
+
+        BusinessUnit businessUnit) {
 }

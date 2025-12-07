@@ -15,6 +15,7 @@ import ProjectsListView from '../views/Projects/ProjectsListView.vue'
 import ProjectFormView from '../views/Projects/ProjectFormView.vue'
 import DeveloperCommissionsView from '../views/Commissions/DeveloperCommissionsView.vue'
 import SalespersonCommissionsView from '../views/Commissions/SalespersonCommissionsView.vue'
+import InstallationBonusView from '../views/Commissions/InstallationBonusView.vue'
 
 const routes = [
    { path: '/', name: 'LoginView', component: LoginView, meta: { requiresAuth: true } },
@@ -49,6 +50,12 @@ const routes = [
      path: '/commissions/salespeople', 
      name: 'SalespersonCommissions',
      component: SalespersonCommissionsView, 
+     meta: { requiresAuth: true } 
+   },
+   { 
+     path: '/commissions/bonuses', 
+     name: 'InstallationBonuses', 
+     component: InstallationBonusView,
      meta: { requiresAuth: true } 
    }
 ]

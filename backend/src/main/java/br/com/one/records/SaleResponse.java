@@ -21,5 +21,8 @@ public record SaleResponse(
     String validatorAccess,
     String vpsIp,
     UserSummaryResponse installer,
-    List<InstallmentResponse> installments
+    List<InstallmentResponse> installments,
+    boolean outOfHours,
+    BigDecimal installationBonus,
+    boolean installationBonusPaid
 ) {}

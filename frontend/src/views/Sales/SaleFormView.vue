@@ -22,7 +22,8 @@ const saleForm = ref({
   siteInstallationDate: '',
   validatorAccess: '',
   vpsIp: '',
-  installerId: null
+  installerId: null,
+  outOfHours: false
 });
 
 // Propriedade computada para mostrar/esconder campos do crediário
@@ -142,6 +143,14 @@ onMounted(loadFormData);
                     <option :value="null">Nenhum / Não definido</option>
                     <option v-for="user in users" :key="user.id" :value="user.id">{{ user.name }}</option>
                 </select>
+             </div>
+             <div class="col-md-6 mb-3">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="outOfHours" v-model="saleForm.outOfHours">
+                    <label class="form-check-label" for="outOfHours">
+                        Instalação Fora de Horário? (Gera bônus de R$ 200,00)
+                    </label>
+                </div>
              </div>
              <div class="col-md-6 mb-3">
                 <label for="vpsIp" class="form-label">IP da VPS</label>

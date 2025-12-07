@@ -38,6 +38,5 @@ public class CommissionPayout {
 	
 	@ManyToOne(optional = false)
     @JoinColumn(name = "admin_user_id")
-    private User processedBy; // Quem apertou o botão (admin)0
-	
+    private User processedBy;
 }

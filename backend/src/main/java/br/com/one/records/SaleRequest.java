@@ -20,5 +20,6 @@ public record SaleRequest (
 		LocalDateTime siteInstallationDate,
 		String validatorAccess,
 		String vpsIp,
-		Long installerId
+		Long installerId,
+		boolean outOfHours
 ) {}

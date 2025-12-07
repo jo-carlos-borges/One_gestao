@@ -32,7 +32,14 @@ public interface InstallmentRepository extends JpaRepository<Installment, Long> 
 		    """)
 	List<SalespersonCommissionResponse> findPayableSalespersonCommissions();
 	
-	@Query(""" """)
-	List<>
+	@Query("""
+		    SELECT i FROM Installment i
+		    LEFT JOIN i.sale s
+		    LEFT JOIN i.project p
+		    WHERE (s.salesPerson.id = :salespersonId OR p.salesperson.id = :salespersonId)
+		    AND i.status = 'PAID'
+		    AND i.commissionPaid = false
+		    """)
+	List<Installment> findUnpaidCommissionsBySalespersonId(Long salespersonId);
 	
 }

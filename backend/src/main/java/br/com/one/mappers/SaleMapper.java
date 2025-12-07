@@ -61,7 +61,10 @@ public class SaleMapper {
                 sale.getValidatorAccess(),
                 sale.getVpsIp(),
                 installerResponse,
-                installmentResponses
+                installmentResponses,
+                sale.isOutOfHours(),
+                sale.getInstallationBonus(),
+                sale.isInstallationBonusPaid()
         );
     }
 }

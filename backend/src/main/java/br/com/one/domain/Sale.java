@@ -72,4 +72,13 @@ public class Sale {
     @ManyToOne
     @JoinColumn(name = "installer_id")
     private User installer;
+    
+    @Column(nullable = false)
+    private boolean outOfHours;
+    
+    @Column(precision = 10, scale = 2)
+    private BigDecimal installationBonus;
+    
+    @Column(nullable = false)
+    private boolean installationBonusPaid;
 }

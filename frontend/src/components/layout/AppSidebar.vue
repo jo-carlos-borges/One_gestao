@@ -11,7 +11,8 @@ import {
   DollarSign,
   Briefcase,
   Users,
-  Settings
+  Settings,
+  Wrench
 } from 'lucide-vue-next'
 
 const isDark = inject('isDark')
@@ -32,6 +33,7 @@ const menuItems = [
   { name: 'Financeiro', icon: DollarSign, route: '/financial', active: 'Financial' },
   { name: 'Pontuação (Devs)', icon: Briefcase, route: '/commissions/developers', active: 'DeveloperCommissions' },
   { name: 'Comissão (Vendas)', icon: DollarSign, route: '/commissions/salespeople', active: 'SalespersonCommissions' },
+  { name: 'Bônus Instalação', icon: Wrench, route: '/commissions/bonuses', active: 'InstallationBonuses' },
   { name: 'Funcionários', icon: Users, route: '/employees', active: 'Employees' },
   { name: 'Configurações', icon: Settings, route: '/settings', active: 'Settings' },
 ]

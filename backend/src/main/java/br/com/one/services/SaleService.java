@@ -77,7 +77,15 @@ public class SaleService {
                 .validatorAccess(request.validatorAccess())
                 .vpsIp(request.vpsIp())
                 .installer(installer)
+                .outOfHours(request.outOfHours())
+                .installationBonusPaid(false)
                 .build();
+        
+        if (request.outOfHours()) {
+        	sale.setInstallationBonus(new BigDecimal("200.00"));
+        } else {
+        	sale.setInstallationBonus(BigDecimal.ZERO);
+        }
 
         Sale savedSale = saleRepository.save(sale);
 
@@ -131,4 +139,6 @@ public class SaleService {
     	SaleResponse response = SaleMapper.toResponse(sale, installments);
     	return Optional.of(response);
     }
+    
+    
 }

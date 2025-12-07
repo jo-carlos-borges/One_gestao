@@ -38,6 +38,10 @@ public class Installment {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id")
     private Project project;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "subscription_id")
+    private Subscription subscription;
 	
 	@Column(nullable = false, precision = 10, scale = 2)
 	private BigDecimal amount;

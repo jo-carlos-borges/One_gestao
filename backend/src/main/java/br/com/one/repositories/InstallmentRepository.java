@@ -42,4 +42,6 @@ public interface InstallmentRepository extends JpaRepository<Installment, Long> 
 		    """)
 	List<Installment> findUnpaidCommissionsBySalespersonId(Long salespersonId);
 	
+	List<Installment> findBySubscriptionId(Long subscriptionId);
+	
 }
